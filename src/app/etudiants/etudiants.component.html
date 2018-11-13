@@ -1,3 +1,12 @@
-<p>
-  etudiants works!
-</p>
+<h1>Liste des étudiants</h1>
+
+<table *ngIf="listFormations" class="table">
+  <tr>
+    <th>ID</th><th>Nom</th><th>Durée</th>
+  </tr>
+  <tr *ngFor="let f of listFormations._embedded.formations">
+    <td>{{f.id}}</td>
+    <td>{{f.nom}}</td>
+    <td>{{f.duree}}</td>
+  </tr>
+</table>

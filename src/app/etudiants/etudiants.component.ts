@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-etudiants',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EtudiantsComponent implements OnInit {
 
-  constructor() { }
+  listFormations;
+
+  constructor(private httpClient : HttpClient) { }
 
   ngOnInit() {
+    this.httpClient.get("http://localhost:8080/formations")
+      .subscribe(data=>{
+      this.listFormations._embedded.etudiants.push(data);
+    },err=>{
+        console.log(err);
+        }
+
+      );
   }
 
 }
